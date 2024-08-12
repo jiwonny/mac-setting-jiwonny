@@ -37,6 +37,45 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
 
 
-
 ## aws
 brew install --cask aws-vault
+
+## golang
+```bash
+# install asdf
+$ brew install asdf
+$ echo -e "\n. $(brew --prefix asdf)/libexec/asdf.sh" >> ${ZDOTDIR:-~}/.zshrc
+```
+
+```bash
+# install golang with asdf
+$ asdf plugin add golang https://github.com/asdf-community/asdf-golang.git
+$ asdf install golang latest
+$ asdf global golang latest
+
+# install golangci-lint
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.59.1
+```
+
+```bash
+# .zshrc 수정
+export GOROOT="$(asdf where golang)/go/"
+export GOPATH="$(asdf where golang)/packages"
+export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$GOPATH/bin/golangci-lint"
+```
+
+## direnv
+```bash
+$ asdf plugin-add direnv
+$ asdf direnv setup --shell bash --version latest
+$ asdf global direnv latest
+```
+
+## node
+```bash
+# nvm 설치
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
+```
+위에 설치하면 zshrc 알아서 수정되더라.
+
