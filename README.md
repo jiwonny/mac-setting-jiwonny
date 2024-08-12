@@ -13,10 +13,19 @@ $ cat ~/.ssh/id_ras.pub
 ```
 위에서 복사한 key를 github ssh key에 등록한다
 
+### 기타
+```bash
+$ brew install gh
+$ gh auth login
+
+# 확인을 위해
+$ gh auth token
+```
+
 ## terminal
 ```bash
 # basic
-$ brew install coreutils curl
+$ brew install coreutils curl wget
 ```
 
 ### terminal 꾸미기
@@ -36,9 +45,12 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ```
 
-
 ## aws
-brew install --cask aws-vault
+```bash
+$ brew install --cask aws-vault
+```
+`~/.aws/config` 에 profile을 추가한다
+
 
 ## golang
 ```bash
@@ -70,6 +82,13 @@ export PATH="$PATH:$GOPATH/bin/golangci-lint"
 $ asdf plugin-add direnv
 $ asdf direnv setup --shell bash --version latest
 $ asdf global direnv latest
+```
+
+```
+$ touch .envrc 
+
+# .zshrc 에 아래 항목 추가
+eval "$(direnv hook zsh)"
 ```
 
 ## node
